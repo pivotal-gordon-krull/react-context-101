@@ -1,20 +1,21 @@
 import { describe, expect, test } from "vitest";
 import { useContext } from "react";
-import { CountContext } from "./CountContext.ts";
+import { CountContextReadOnly, CountContextWriteOnly } from "./CountContext.ts";
 import CountContextProvider from "./CountContextProvider.tsx";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 
 describe("CountContextProvider", () => {
   function TestComponent() {
-    const countContext = useContext(CountContext)
+    const countContextReadOnly = useContext(CountContextReadOnly)
+    const countContextWriteOnly = useContext(CountContextWriteOnly)
 
     return (
       <>
-        <p>count:{countContext.count}</p>
+        <p>count:{countContextReadOnly.count}</p>
 
         <button
-          onClick={() => countContext.setCount(5)}
+          onClick={() => countContextWriteOnly.setCount(5)}
         >
           Set
         </button>

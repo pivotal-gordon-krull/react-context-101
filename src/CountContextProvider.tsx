@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { CountContext } from "./CountContext.ts";
+import { CountContextReadOnly, CountContextWriteOnly } from "./CountContext.ts";
 
 interface Props {
   children: ReactNode
@@ -8,7 +8,11 @@ interface Props {
 function CountContextProvider({ children }: Props) {
   const [count, setCount] = useState(0)
 
-  return (<CountContext.Provider value={{ count, setCount }}>{children}</CountContext.Provider>);
+  return (<CountContextReadOnly.Provider value={{ count }}>
+    <CountContextWriteOnly.Provider value={{ setCount }}>
+      {children}
+    </CountContextWriteOnly.Provider>
+  </CountContextReadOnly.Provider>);
 }
 
 export default CountContextProvider

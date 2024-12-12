@@ -9,20 +9,20 @@ describe("App", () => {
   });
 
   test("defaultで0が表示される", () => {
-    expect(screen.getAllByText("0").length).toEqual(2)
+    expect(screen.getByText("0")).toBeInTheDocument()
   })
 
   test("＋を押すとcountが増える", async () => {
     await userEvent.click(screen.getAllByText("+")[0])
-    expect(screen.getAllByText("1").length).toEqual(2)
+    expect(screen.getByText("1")).toBeInTheDocument()
     await userEvent.click(screen.getAllByText("+")[1])
-    expect(screen.getAllByText("2").length).toEqual(2)
+    expect(screen.getByText("2")).toBeInTheDocument()
   })
 
   test("ーを押すとcountが減る", async () => {
     await userEvent.click(screen.getAllByText("-")[0])
-    expect(screen.getAllByText("-1").length).toEqual(2)
+    expect(screen.getByText("-1")).toBeInTheDocument()
     await userEvent.click(screen.getAllByText("-")[1])
-    expect(screen.getAllByText("-2").length).toEqual(2)
+    expect(screen.getByText("-2")).toBeInTheDocument()
   })
 })

@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { CountContext } from "./CountContext.ts";
+import { CountContextReadOnly, CountContextWriteOnly } from "./CountContext.ts";
 
 
 const Inner = () => {
-  const { count, setCount } = useContext(CountContext)
+  const { count } = useContext(CountContextReadOnly)
+  const { setCount } = useContext(CountContextWriteOnly)
 
   return (
     <div className="inner">
-      {count}
       <button onClick={() => { setCount(count+1)}}>+</button>
       <button onClick={() => { setCount(count-1)}}>-</button>
     </div>
