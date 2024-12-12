@@ -1,13 +1,14 @@
-import { useState } from "react"
 import "./App.css"
 import Outer from "./Outer.tsx";
+import CountContextProvider from "./CountContextProvider.tsx";
 
 const App = () => {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="app">
-      <Outer count={count} setCount={setCount}/>
+      <CountContextProvider>
+        <Outer />
+      </CountContextProvider>
     </div>
   )
 }

@@ -1,8 +1,10 @@
-interface Props {
-  count: number;
-  setCount: (count: number) => void;
-}
-const Inner = ({ count, setCount} : Props) => {
+import { useContext } from "react";
+import { CountContext } from "./CountContext.ts";
+
+
+const Inner = () => {
+  const { count, setCount } = useContext(CountContext)
+
   return (
     <div className="inner">
       {count}
